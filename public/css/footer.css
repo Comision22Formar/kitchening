@@ -1,0 +1,14 @@
+.footer__nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1px;
+}
+
+.footer__nav ul li {
+    background-color: var(--colorRojo);
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px 0;
+}
