@@ -31,9 +31,26 @@
 }
 
 .header__nav ul li {
-    background-color: var(--colorGris);
+    background-color: var(--colorGrisOscuro);
     width: 100%;
     text-align: center;
     text-transform: uppercase;
-    padding: 5px 0;
+    padding: 8px 0;
+}
+
+/* tablet */
+@media (min-width:768px) {
+
+    .header__bars {
+       display: none;
+    }
+
+    .header__nav ul {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .header__nav ul li {
+       font-size: 0.7rem;
+    }
 }
