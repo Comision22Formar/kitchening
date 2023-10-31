@@ -53,7 +53,7 @@
   margin: 20px 0;
 }
 
-@media (width: 768px) {
+@media (min-width: 768px) {
   /* sección banner */
   .home__main__banner {
     display: block;
@@ -69,5 +69,11 @@
 
   .home__main__products__product {
     width: 49%;
+  }
+}
+
+@media (min-width:1024px) {
+  .home__main__products__product {
+    width: 32%;
   }
 }

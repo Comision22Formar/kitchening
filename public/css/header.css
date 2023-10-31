@@ -35,7 +35,7 @@
     width: 100%;
     text-align: center;
     text-transform: uppercase;
-    padding: 8px 0;
+    padding: 10px 0;
 }
 
 /* tablet */
@@ -53,4 +53,12 @@
     .header__nav ul li {
        font-size: 0.7rem;
     }
+}
+
+/* desktop */
+
+@media (min-width: 1024px) {
+    .header__nav ul li {
+        font-size: 1rem;
+     }
 }
