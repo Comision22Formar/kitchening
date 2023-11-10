@@ -10,6 +10,7 @@
     border-radius: 50%;
     border: 1px solid var(--colorGris);
     width: 180px;
+    animation: rotate-scale-up 2s infinite;
 }
 
 .header__bars {
@@ -31,11 +32,22 @@
 }
 
 .header__nav ul li {
+    width: 100%;
+}
+
+.header__nav ul li a {
     background-color: var(--colorGrisOscuro);
     width: 100%;
     text-align: center;
     text-transform: uppercase;
     padding: 10px 0;
+    display: inline-block;
+    transition-property: background-color;
+    transition-duration: 1s;
+}
+
+.header__nav ul li a:hover {
+    background-color: var(--colorGris);
 }
 
 /* tablet */
