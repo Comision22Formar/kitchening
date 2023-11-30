@@ -10,7 +10,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 /* routes */
 app.get('/', (req,res) => res.sendFile(path.join(__dirname, 'views', 'home.html')));
-app.get('/contact', (req,res) => res.sendFile(path.join(__dirname, 'views', 'contact.html')));
+app.get('/carrito', (req,res) => res.sendFile(path.join(__dirname, 'views', 'carrito.html')));
+app.get('/detalle', (req,res) => res.sendFile(path.join(__dirname, 'views', 'detalle.html')));
+app.get('/login', (req,res) => res.sendFile(path.join(__dirname, 'views', 'login.html')));
+app.get('/registro', (req,res) => res.sendFile(path.join(__dirname, 'views', 'registro.html')));
 
 
 /* server */
