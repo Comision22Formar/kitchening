@@ -10,7 +10,7 @@
     border-radius: 50%;
     border: 1px solid var(--colorGris);
     width: 180px;
-    animation: rotate-scale-up 2s infinite;
+    /* animation: rotate-scale-up 2s infinite; */
 }
 
 .header__bars {

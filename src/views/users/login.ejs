@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ES">
+
+<%- include('../partials/head',{
+	title : 'Login'
+}) %>
+
+
+<body >
+
+	<main class="d-flex flex-column justify-content-between" style="height: 100vh;">
+		<%- include('../partials/header') %>
+
+		<section class="row">
+			<div class="col-12 col-md-10 col-lg-6 mx-auto my-5">
+				<div class="card shadow">
+					<div class="card-header">
+						<h4 class="card-title">Login de usuario</h4>
+					</div>
+					<div class="card-body">
+						<form action="" class="row">
+							<div class="col-12 mb-3">
+								<label for="email" class="form-label">Correo electrónico</label>
+								<input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+							  </div>
+							  <div class="col-12 mb-3">
+								<label for="password" class="form-label">Contraseña</label>
+								<input type="password" name="password"class="form-control" id="password">
+							  </div>
+							  <div class="col-12 col-md-6 mb-3">
+
+							  <div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="remember" name="remember">
+								<label class="form-check-label" for="remember">
+								  Recordame
+								</label>
+							  </div>
+							</div>
+							<div class="col-12 col-md-6 mb-3">
+								<button class="btn btn-dark w-100">Ingresá</button>
+
+						</div>
+							 
+						
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<%- include('../partials/footer') %>
+
+	</main>
+
+</body>
+</html>
