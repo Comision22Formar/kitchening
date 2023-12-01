@@ -2,7 +2,7 @@
 <html lang="ES">
 
 <%- include('./partials/head',{
-	title : "Kitchening"
+	title : "Home"
 }) %>
 
 <body class="home">
@@ -12,18 +12,18 @@
 	<main>
 		<!-- banner -->
 		<div>
-			<img class="home__main__banner" src="img/img-banner.jpg" alt="banner">
+			<img class="home__main__banner" src="images/img-banner.jpg" alt="banner">
 		</div>
 
 		<!-- productos -->
 		<div class="home__main__products">
-			
-			<% for( let i = 0; i < 6; i++ ) { %>
-				
-				<%- include('./partials/product-card') %>
-
-			<% } %>
-			
+		
+			<% products.forEach(product => { %>
+				<%- include('./partials/product-card',{
+					...product
+				}) %>
+			<% }) %>
+		
 		</div>
 	</main>
 	

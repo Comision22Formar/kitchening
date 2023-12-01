@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ES">
+
+<%- include('./partials/head',{
+	title : 'Dashboard'
+}) %>
+
+
+<body>
+    <%- include('./partials/header-admin') %>
+    <main class="container">
+        <section class="row my-5">
+            <div class="col-12 col-md-10 mx-auto">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h4 class="cart-title">Restaurantes</h4>
+                        <a class="btn btn-dark" href="/productos/agregar">Nuevo</a>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Dirección</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Acciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% products.forEach(({id,name,address,category}) => { %>
+                                    <tr>
+                                        <th scope="row"><%= id %></th>
+                                        <td><%= name %></td>
+                                        <td><%= address %></td>
+                                        <td><%= category %></td>
+                                        <td><a class="text-primary" href="/productos/editar/<%= id %>">Editar</a></td>
+                                      </tr>
+                                <% }) %>
+                              
+        
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('./partials/scripts') %>
+
+</body>
+</html>

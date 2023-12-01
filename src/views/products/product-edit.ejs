@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ES">
+
+<%- include('../partials/head',{
+	title : 'Editar'
+}) %>
+
+
+<body>
+    <%- include('../partials/header-admin') %>
+    <main class="container">
+        <section class="row my-5">
+            <div class="col-12 col-md-10 mx-auto">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="/admin" class="text-primary">Home</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Editar: "Restaurante"</li>
+                            </ol>
+                          </nav>
+                    </div>
+                    <div class="card-body">
+                        <form action="" class="row">
+                            <h3>Editar: "Restaurante"</h3>
+                            <hr>
+                            <div class="col-12 col-md-6 mb-3">
+                                <div class="form-floating ">
+                                    <input name="name" type="text" class="form-control" id="name" >
+                                    <label for="name">Nombre</label>
+                                  </div>
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                              <div class="form-floating">
+                                <input name="address" type="text" class="form-control" id="address">
+                                <label for="address">Dirección</label>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <div class="form-floating">
+                                    <select name="category" class="form-select" id="category" aria-label="Floating label select example">
+                                      <option value="" selected hidden></option>
+                                      <option value="barato">Barato</option>
+                                      <option value="romantico">Romantico</option>
+                                      <option value="sofisticado">Sofisticado</option>
+                                    </select>
+                                    <label for="category">Categoría</label>
+                                  </div>
+                              </div>
+                              <div class="col-12 col-md-3 mb-3">
+                                  <input name="mainImage" type="file" class="form-control" id="mainImage" hidden>
+                                  <label class="btn btn-lg btn-outline-dark w-100" for="mainImage">Imagen principal</label>
+                              </div>
+                              <div class="col-12 col-md-3 mb-3">
+                                <input  name="images" type="file" class="form-control" id="images" hidden multiple>
+                                <label class="btn btn-lg btn-outline-dark w-100" for="images">Imágenes</label>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <div class="form-floating">
+                                    <textarea name="description" class="form-control" id="description" style="height: 200px;"></textarea>
+                                    <label for="description">Descripción</label>
+                                  </div>
+                            </div>
+                           
+                            <div class="col-12 d-flex justify-content-end">
+                                <button class="btn btn-lg btn-dark">Guardar cambios</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/scripts') %>
+
+</body>
+</html>

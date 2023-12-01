@@ -60,6 +60,7 @@
     .header__nav ul {
         flex-direction: row;
         gap: 10px;
+        justify-content: space-between;
     }
 
     .header__nav ul li {

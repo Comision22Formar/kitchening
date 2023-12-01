@@ -23,7 +23,15 @@ a {
     color: #ffffff;
 }
 
+ul {
+    padding: 0;
+}
+
 li {
     list-style: none;
+}
+
+textarea {
+    resize: none;
 }
 
