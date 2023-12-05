@@ -7,6 +7,9 @@ module.exports = {
     },
     edit : (req,res) => {
         return res.render('products/product-edit')
+    },
+    search : (req,res) => {
+        
     }
 
 }
