@@ -8,6 +8,16 @@
 
 .home__main__products__product {
   width: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 15px silver;
+  transition: all 0.5s ease;
+  border-radius: 5px;
+}
+
+.home__main__products__product:hover{
+  transform: scale(1.05);
 }
 
 .home__main__products__product__photo-container {

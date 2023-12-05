@@ -5,7 +5,7 @@ const router = express.Router();
 /* /productos */
 
 router
-  .get('/detalle/:id?', detail)
+  .get('/detalle/:id', detail)
   .get('/agregar',add)
   .get('/editar/:id?',edit)
 

@@ -6,11 +6,36 @@
 }) %>
 
 
-<body>
-	<%- include('../partials/header') %>
+<body class="detail">
+	
+	<main class="d-flex flex-column justify-content-between" style="height: 100vh;">
+		<%- include('../partials/header') %>
 
-    <h1>Detalle del producto</h1>
+		<section class="row">
+		<div class="col-12 col-md-10 col-lg-8 mx-auto">
+			<div class="card" style="background-color: rgba(255, 255, 255, 0.5);">
+				<div class="card-body d-flex gap-4">
+					<div>
+						<img src="/images/<%= mainImage %>" alt="">
+					</div>
+					<div>
+						<h3><%= name %></h3>
+						<hr>
+						<h5><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="text-secondary"><i class="fa-solid fa-map-location-dot"></i></a> <%= address %></h5>
+						<p><%= description %></p>
+					</div>
+					<%- include('../partials/modal-show-map-detail',{
+						url_map
+					}) %>
+				</div>
+				
+			</div>
+		</div>
+	</section>
 	<%- include('../partials/footer') %>
+
+	</main>
+
 
 </body>
 </html>
