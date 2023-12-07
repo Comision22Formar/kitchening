@@ -16,33 +16,39 @@
                         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                               <li class="breadcrumb-item"><a href="/admin" class="text-primary">Home</a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Editar: "Restaurante"</li>
+                              <li class="breadcrumb-item active" aria-current="page">Editando <%= name %></li>
                             </ol>
                           </nav>
                     </div>
                     <div class="card-body">
                         <form action="" class="row">
-                            <h3>Editar: "Restaurante"</h3>
+                            <h3>Editando <%= name %></h3>
                             <hr>
                             <div class="col-12 col-md-6 mb-3">
                                 <div class="form-floating ">
-                                    <input name="name" type="text" class="form-control" id="name" >
+                                    <input name="name" type="text" class="form-control" id="name" value="<%= name %>">
                                     <label for="name">Nombre</label>
                                   </div>
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                               <div class="form-floating">
-                                <input name="address" type="text" class="form-control" id="address">
+                                <input name="address" type="text" class="form-control" id="address" value="<%= address %>">
                                 <label for="address">Dirección</label>
                               </div>
                             </div>
+                            <div class="col-12 mb-3 d-flex justify-content-between align-items-center gap-3">
+                                <div class="form-floating w-100">
+                                  <input name="address" type="text" class="form-control" id="address" value="<%= url_map %>">
+                                  <label for="address">URL Google Maps</label>
+                                </div>
+                                <a href="https://www.google.com/maps" target="_blank" class="btn btn-lg btn-outline-dark"><i class="fa-solid fa-map-location-dot"></i></a>
+                              </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <div class="form-floating">
                                     <select name="category" class="form-select" id="category" aria-label="Floating label select example">
-                                      <option value="" selected hidden></option>
-                                      <option value="barato">Barato</option>
-                                      <option value="romantico">Romantico</option>
-                                      <option value="sofisticado">Sofisticado</option>
+                                      <option <%= category === "barato" && 'selected'%> value="barato">Barato</option>
+                                      <option <%= category === "romantico" && 'selected'%> value="romantico">Romantico</option>
+                                      <option <%= category === "sofisticado" && 'selected'%> value="sofisticado">Sofisticado</option>
                                     </select>
                                     <label for="category">Categoría</label>
                                   </div>
@@ -57,7 +63,7 @@
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="form-floating">
-                                    <textarea name="description" class="form-control" id="description" style="height: 150px;"></textarea>
+                                    <textarea name="description" class="form-control" id="description" style="height: 150px;"><%= description %></textarea>
                                     <label for="description">Descripción</label>
                                   </div>
                             </div>
