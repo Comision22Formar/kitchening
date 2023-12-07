@@ -2,12 +2,12 @@ const add = require('./add')
 const detail = require('./detail')
 const edit = require('./edit')
 const search = require('./search')
-const store = require('./store')
+const create = require('./create')
 
 
 module.exports = {
     add,
-    store,
+    create,
     detail,
     edit,
     search,

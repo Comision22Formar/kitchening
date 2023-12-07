@@ -21,7 +21,7 @@
                           </nav>
                     </div>
                     <div class="card-body">
-                        <form action="" class="row">
+                        <form action="/productos/crear" method="POST" class="row">
                             <h3>Nuevo Restaurante</h3>
                             <hr>
                             <div class="col-12 col-md-6 mb-3">
@@ -36,6 +36,13 @@
                                 <label for="address">Dirección</label>
                               </div>
                             </div>
+                            <div class="col-12 mb-3 d-flex justify-content-between align-items-center gap-3">
+                                <div class="form-floating w-100">
+                                  <input name="url_map" type="text" class="form-control" id="address" >
+                                  <label for="address">URL Google Maps</label>
+                                </div>
+                                <a href="https://www.google.com/maps" target="_blank" class="btn btn-lg btn-outline-dark"><i class="fa-solid fa-map-location-dot"></i></a>
+                              </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <div class="form-floating">
                                     <select name="category" class="form-select" id="category" aria-label="Floating label select example">
@@ -63,7 +70,7 @@
                             </div>
                            
                             <div class="col-12 d-flex justify-content-end">
-                                <button class="btn btn-lg btn-dark">Guardar cambios</button>
+                                <button type="submit" class="btn btn-lg btn-dark">Guardar cambios</button>
                             </div>
                         </form>
 

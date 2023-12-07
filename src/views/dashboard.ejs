@@ -39,11 +39,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <% products.forEach(({id,name,address,category, mainImage,description, phone})=>
+                                            <% products.forEach(({id,name,address,category, mainImage,description, phone},index)=>
                                                 { %>
                                                 <tr>
                                                     <th scope="row">
-                                                        <%= id %>
+                                                        <%= index + 1 %>
                                                     </th>
                                                     <td>
                                                         <%= name %>
