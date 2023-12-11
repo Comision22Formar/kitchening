@@ -21,7 +21,7 @@
                           </nav>
                     </div>
                     <div class="card-body">
-                        <form action="" class="row">
+                        <form action="/productos/actualizar/<%= id %>?_method=PUT" class="row" method="POST">
                             <h3>Editando <%= name %></h3>
                             <hr>
                             <div class="col-12 col-md-6 mb-3">
@@ -38,8 +38,8 @@
                             </div>
                             <div class="col-12 mb-3 d-flex justify-content-between align-items-center gap-3">
                                 <div class="form-floating w-100">
-                                  <input name="address" type="text" class="form-control" id="address" value="<%= url_map %>">
-                                  <label for="address">URL Google Maps</label>
+                                  <input name="url_map" type="text" class="form-control" id="url_map" value="<%= url_map %>">
+                                  <label for="url_map">URL Google Maps</label>
                                 </div>
                                 <a href="https://www.google.com/maps" target="_blank" class="btn btn-lg btn-outline-dark"><i class="fa-solid fa-map-location-dot"></i></a>
                               </div>

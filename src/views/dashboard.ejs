@@ -39,7 +39,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <% products.forEach(({id,name,address,category, mainImage,description, phone},index)=>
+                                            <% products.forEach(({id,name,address,category, mainImage,description,
+                                                phone},index)=>
                                                 { %>
                                                 <tr>
                                                     <th scope="row">
@@ -58,29 +59,34 @@
                                                         <div class="d-flex gap-2">
                                                             <button class="btn btn-sm btn-outline-primary border-none"
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal<%= id %>">
+                                                                data-bs-target="#showProductModal<%= id %>">
                                                                 <i class="fa-solid fa-eye"></i>
                                                             </button>
                                                             <a class="btn btn-sm btn-outline-success border-none"
                                                                 href="/productos/editar/<%= id %>"><i
                                                                     class="fa-solid fa-pencil"></i></a>
-                                                            <a class="btn btn-sm btn-outline-danger border-none"
-                                                                href="/productos/eliminar/<%= id %>"><i
-                                                                    class="fa-solid fa-trash"></i></a>
-                                                            <%- include('./partials/modal-show-product-admin',{ id, name,
-                                                                address, category, mainImage, description, phone }) %>
+                                                            <button class="btn btn-sm btn-outline-danger border-none"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#warningRemoveModal<%= id %>">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </button>
+                                                            <%- include('./partials/modal-show-product-admin',{ id,
+                                                                name, address, category, mainImage, description, phone
+                                                                }) %>
+                                                            <%- include('./partials/modal-warning-delete-product-admin',{ id, name
+                                                                }) %>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <% }) %>
                                         </tbody>
                                     </table>
-                                <% }else{ %>
-                                    <div class="alert alert-warning" role="alert">
-                                        No hay productos para mostrar :(
-                                      </div>                                      
-                                <% } %>
-                              
+                                    <% }else{ %>
+                                        <div class="alert alert-warning" role="alert">
+                                            No hay productos para mostrar :(
+                                        </div>
+                                        <% } %>
+
                             </div>
                         </div>
                     </div>
