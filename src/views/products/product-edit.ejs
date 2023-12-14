@@ -21,7 +21,7 @@
                           </nav>
                     </div>
                     <div class="card-body">
-                        <form action="/productos/actualizar/<%= id %>?_method=PUT" class="row" method="POST">
+                        <form action="/productos/actualizar/<%= id %>?_method=PUT" class="row" method="POST" enctype="multipart/form-data">
                             <h3>Editando <%= name %></h3>
                             <hr>
                             <div class="col-12 col-md-6 mb-3">

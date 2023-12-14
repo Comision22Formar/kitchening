@@ -1,5 +1,6 @@
 const express = require('express');
 const { detail, add, edit, create, update, remove } = require('../controllers/productsController');
+const upload = require('../middlewares/upload');
 const router = express.Router();
 
 /* /productos */
@@ -7,9 +8,9 @@ const router = express.Router();
 router
   .get('/detalle/:id', detail)
   .get('/agregar',add)
-  .post('/crear',create)
+  .post('/crear',upload.single('mainImage'), create)
   .get('/editar/:id',edit)
-  .put('/actualizar/:id',update)
+  .put('/actualizar/:id',upload.single('mainImage'),update)
   .delete('/eliminar/:id',remove)
 
 module.exports = router;

@@ -16,16 +16,16 @@
 			<div class="card" style="background-color: rgba(255, 255, 255, 0.5);">
 				<div class="card-body d-flex gap-4">
 					<div>
-						<img src="/images/<%= mainImage %>" alt="">
+						<img src="/images/<%= mainImage || 'default.png' %>" alt="">
 					</div>
 					<div>
 						<h3><%= name %></h3>
 						<hr>
-						<h5><a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="text-secondary"><i class="fa-solid fa-map-location-dot"></i></a> <%= address %></h5>
+						<h5><a href="" data-bs-toggle="modal" data-bs-target="#modalMap" class="text-secondary"><i class="fa-solid fa-map-location-dot"></i></a> <%= address %></h5>
 						<p><%= description %></p>
 					</div>
 					<%- include('../partials/modal-show-map-detail',{
-						url_map
+						url_map,
 					}) %>
 				</div>
 				
