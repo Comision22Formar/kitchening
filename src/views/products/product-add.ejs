@@ -25,38 +25,50 @@
                             <h3>Nuevo Restaurante</h3>
                             <hr>
                             <div class="col-12 col-md-6 mb-3">
-                                <div class="form-floating ">
-                                    <input name="name" type="text" class="form-control" id="name" >
+                                <div class="form-floating">
+                                    <input name="name" type="text" class="form-control <%= (locals.errors && errors.name) && 'is-invalid' %>" id="name" value="<%= locals.old && old.name %>">
                                     <label for="name">Nombre</label>
-                                  </div>
+                                </div>
+                                <small class="text-danger ms-2"><%= (locals.errors && errors.name) && errors.name.msg %></small>
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                               <div class="form-floating">
-                                <input name="address" type="text" class="form-control" id="address">
+                                <input name="address" type="text" class="form-control <%= (locals.errors && errors.address)  && 'is-invalid'%>" id="address" value="<%= locals.old && old.address %>">
                                 <label for="address">Dirección</label>
                               </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.address) && errors.address.msg %></small>
+
                             </div>
-                            <div class="col-12 mb-3 d-flex justify-content-between align-items-center gap-3">
-                                <div class="form-floating w-100">
-                                  <input name="url_map" type="text" class="form-control" id="address" >
-                                  <label for="address">URL Google Maps</label>
+                            <div class="col-12 mb-3 d-flex justify-content-between align-items-start gap-3">
+                                <div class="w-100">
+                                  <div class="form-floating ">
+                                    <input name="url_map" type="text" class="form-control <%= (locals.errors && errors.url_map)  && 'is-invalid'%>" id="url_map" value="<%= locals.old && old.url_map %>">
+                                    <label for="url_map">URL Google Maps</label>
+                                  </div>
+                                  <small class="text-danger ms-2"><%= (locals.errors && errors.url_map) && errors.url_map.msg %></small>
                                 </div>
+                              
+
                                 <a href="https://www.google.com/maps" target="_blank" class="btn btn-lg btn-outline-dark"><i class="fa-solid fa-map-location-dot"></i></a>
                               </div>
                             <div class="col-12 col-md-6 mb-3">
                                 <div class="form-floating">
-                                    <select name="category" class="form-select" id="category" aria-label="Floating label select example">
+                                    <select name="category" class="form-select <%= (locals.errors && errors.category)  && 'is-invalid'%>" id="category" aria-label="Floating label select example">
                                       <option value="" selected hidden></option>
-                                      <option value="barato">Barato</option>
-                                      <option value="romantico">Romantico</option>
-                                      <option value="sofisticado">Sofisticado</option>
+                                      <% categories.forEach(category => { %>
+                                        <option value="<%= category %>" <%= (locals.old && old.category) && old.category == category ? 'selected' : null %>><%= category %></option>
+                                      <% }) %>
                                     </select>
                                     <label for="category">Categoría</label>
                                   </div>
+                                  <small class="text-danger ms-2"><%= (locals.errors && errors.category) && errors.category.msg %></small>
+
                               </div>
                               <div class="col-12 col-md-3 mb-3">
                                   <input name="mainImage" type="file" class="form-control" id="mainImage" hidden>
                                   <label class="btn btn-lg btn-outline-dark w-100" for="mainImage">Imagen principal</label>
+                                  <small class="text-danger ms-2"><%= (locals.errors && errors.mainImage) && errors.mainImage.msg %></small>
+
                               </div>
                               <div class="col-12 col-md-3 mb-3">
                                 <input  name="images" type="file" class="form-control" id="images" hidden multiple>
@@ -64,9 +76,11 @@
                             </div>
                             <div class="col-12 mb-3">
                                 <div class="form-floating">
-                                    <textarea name="description" class="form-control" id="description" style="height: 150px;"></textarea>
+                                    <textarea name="description" class="form-control <%= (locals.errors && errors.description) && 'is-invalid' %>" id="description" style="height: 150px;"><%= locals.old && old.description %></textarea>
                                     <label for="description">Descripción</label>
                                   </div>
+                                  <small class="text-danger ms-2"><%= (locals.errors && errors.description) && errors.description.msg %></small>
+
                             </div>
                            
                             <div class="col-12 d-flex justify-content-end">
