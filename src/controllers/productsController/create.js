@@ -12,9 +12,10 @@ module.exports = (req,res) => {
     if(errors.isEmpty()){
         const {name, address,url_map, description, category} = req.body;
 
-        const mainImage = req.file;
+        const mainImage = req.files.mainImage;
+        const images = req.files.images;
     
-        const newProduct = new Product(name, address, url_map, description, category, mainImage)
+        const newProduct = new Product(name, address, url_map, description, category, mainImage, images)
         const products = leerJSON('products');
     
         products.push(newProduct);
