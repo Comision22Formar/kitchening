@@ -29,12 +29,15 @@
                                     <input name="name" type="text" class="form-control" id="name" value="<%= name %>">
                                     <label for="name">Nombre</label>
                                   </div>
+                                  <small class="text-danger ms-2"><%= (locals.errors && errors.name) && errors.name.msg %></small>
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                               <div class="form-floating">
                                 <input name="address" type="text" class="form-control" id="address" value="<%= address %>">
                                 <label for="address">Dirección</label>
                               </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.address) && errors.address.msg %></small>
+
                             </div>
                             <div class="col-12 mb-3 d-flex justify-content-between align-items-center gap-3">
                                 <div class="form-floating w-100">
@@ -46,9 +49,9 @@
                             <div class="col-12 col-md-6 mb-3">
                                 <div class="form-floating">
                                     <select name="category" class="form-select" id="category" aria-label="Floating label select example">
-                                      <option <%= category === "barato" && 'selected'%> value="barato">Barato</option>
-                                      <option <%= category === "romantico" && 'selected'%> value="romantico">Romantico</option>
-                                      <option <%= category === "sofisticado" && 'selected'%> value="sofisticado">Sofisticado</option>
+                                      <% categories.forEach(cat => { %>
+                                        <option value="<%= cat %>" <%= category == cat ? 'selected' : null %>><%= cat %></option>
+                                      <% }) %>
                                     </select>
                                     <label for="category">Categoría</label>
                                   </div>
@@ -66,6 +69,7 @@
                                     <textarea name="description" class="form-control" id="description" style="height: 150px;"><%= description %></textarea>
                                     <label for="description">Descripción</label>
                                   </div>
+                                  <small class="text-danger ms-2"><%= (locals.errors && errors.description) && errors.description.msg %></small>
                             </div>
                            
                             <div class="col-12 d-flex justify-content-end">

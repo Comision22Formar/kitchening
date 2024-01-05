@@ -1,4 +1,5 @@
 const { leerJSON } = require("../../data");
+const categories = require('../../data/categories.json')
 
 module.exports = (req,res) => {
 
@@ -9,6 +10,7 @@ module.exports = (req,res) => {
     const product = products.find(product => product.id == id);
 
     return res.render('products/product-edit',{
-        ...product
+        ...product,
+        categories
     })
 }
