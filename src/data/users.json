@@ -1,0 +1,18 @@
+[
+   {
+      "id": "6c2714cb-a55b-4228-adcc-fe8063f34608",
+      "name": "Eric",
+      "surname": "Mena",
+      "email": "eric@gmail.com",
+      "password": "$2a$10$ptWyEh10wr9e35sk4FxtzOtopF/setiAsglRRH/8vCUkNLsUY3Md6",
+      "role": "user"
+   },
+   {
+      "id": "2e7c4668-3198-473d-a48b-6d0b61ddd48c",
+      "name": "User",
+      "surname": "Kitchening",
+      "email": "user@gmail.com",
+      "password": "$2a$10$RYlTHCTSNL.TcXAsxEDsZ.kFveiQSIgnl/rXZY.ovHhyi0jmq0FfW",
+      "role": "user"
+   }
+]
