@@ -1,7 +1,6 @@
 const { check, body } = require("express-validator");
-const {compareSync} = require('bcryptjs')
+const {compareSync} = require('bcryptjs');
 const { leerJSON } = require("../src/data");
-
 
 module.exports = [
     check("email")

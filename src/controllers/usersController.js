@@ -38,6 +38,15 @@ module.exports = {
 
         if(errors.isEmpty()){
 
+        const {id, name, role} = leerJSON('users').find(user => user.email === email)
+
+            req.session.userLogin = {
+                id,
+                name,
+                role
+            }
+
+            return res.redirect('/')
 
         }else {
             return res.render('users/login',{
@@ -45,4 +54,13 @@ module.exports = {
             })
         }
     },
+    logout : (req,res) => {
+        
+        req.session.destroy();
+
+        return res.redirect('/')
+    },
+    profile : (req,res) => {
+        return res.render('users/profile')
+    }
 }

@@ -10,11 +10,23 @@
     <nav class="header__nav">
         <ul>
             <li class="animate__animated animate__fadeInDown"><a href="/">home</a></li>
-            <li class="animate__animated animate__fadeInDown"><a href="#">quienes</a></li>
-            <li class="animate__animated animate__fadeInDown"><a href="/admin">dashboard</a></li>
-            <li class="animate__animated animate__fadeInDown"><a href="/carrito">carrito</a></li>
-            <li class="animate__animated animate__fadeInDown"><a href="/usuarios/ingreso">ingresá</a></li>
-            <li class="animate__animated animate__fadeInDown"><a href="/usuarios/registro">registrate</a></li>
+            <li class="animate__animated animate__fadeInDown"><a href="#">nosotros</a></li>
+            <li class="animate__animated animate__fadeInDown"><a href="#">contacto</a></li>
+            <% if (locals.userLogin) { %>
+                <% if (userLogin.role === "admin") { %>
+                    <li class="animate__animated animate__fadeInDown"><a href="/admin">dashboard</a></li>
+                <% }else{ %>
+                    <li class="animate__animated animate__fadeInDown"><a href="/usuarios/reservas">reservas</a></li>
+                <% } %>
+
+                <li class="animate__animated animate__fadeInDown"><a href="/usuarios/perfil">Perfil</a></li>
+                <li class="animate__animated animate__fadeInDown"><a href="/usuarios/salir">Salir</a></li>
+            <% }else{ %>
+                <li class="animate__animated animate__fadeInDown"><a href="/usuarios/ingreso">ingresá</a></li>
+                <li class="animate__animated animate__fadeInDown"><a href="/usuarios/registro">registrate</a></li>
+            <% } %>
+        
+       
         </ul>
     </nav>
 </header>

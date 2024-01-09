@@ -9,6 +9,7 @@ const session = require('express-session');
 const indexRouter = require('./routes/index.routes')
 const usersRouter = require('./routes/users.routes');
 const productsRouter = require('./routes/products.routes');
+const transferLocals = require('./middlewares/transferLocals');
 
 
 const app = express();
@@ -36,6 +37,8 @@ app
   .use(session({
     secret : 'Kitchening forever!!'
   }))
+
+  .use(transferLocals)
 
   /* rutas */
   .use('/', indexRouter)
