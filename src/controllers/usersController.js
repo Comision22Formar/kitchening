@@ -34,7 +34,7 @@ module.exports = {
     },
     processLogin : (req,res) => {
         const errors = validationResult(req);
-        const {email} = req.body;
+        const {email, remember} = req.body;
 
         if(errors.isEmpty()){
 
@@ -45,6 +45,10 @@ module.exports = {
                 name,
                 role
             }
+
+            remember && res.cookie('kitchening4EV3R_user',req.session.userLogin,{
+                maxAge : 1000 * 60 * 2
+            })
 
             return res.redirect('/')
 

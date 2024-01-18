@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index.routes')
 const usersRouter = require('./routes/users.routes');
 const productsRouter = require('./routes/products.routes');
 const transferLocals = require('./middlewares/transferLocals');
+const cookieCheck = require('./middlewares/cookieCheck');
 
 
 const app = express();
@@ -35,9 +36,12 @@ app
 
   /* configuración de session */
   .use(session({
-    secret : 'Kitchening forever!!'
+    secret : 'Kitchening forever!!',
+    resave : true,
+    saveUninitialized : true
   }))
 
+  .use(cookieCheck)
   .use(transferLocals)
 
   /* rutas */
