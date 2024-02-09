@@ -98,25 +98,5 @@
       "mainImage": "img-pdto-1.jpg",
       "images": [],
       "category": "barato"
-   },
-   {
-      "id": "176023eb-819b-464d-b87a-da80a1de36c4",
-      "name": "otro restó",
-      "description": "otra descripción",
-      "address": "en la casa de mi vecino",
-      "url_map": "te la debo",
-      "mainImage": null,
-      "images": [],
-      "category": "romantico"
-   },
-   {
-      "id": "0dfa05f0-882d-42fe-8721-fb89e09cca0c",
-      "name": "La casa de mi tía",
-      "description": "estoy escribiendo más de veinte caracteres",
-      "address": "cerca de mi casa",
-      "url_map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.1403275224893!2d-58.509602423480665!3d-34.499326551993896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb11022101b63%3A0x5c42fd9ac745afa6!2sCasa%20de%20mi%20tia!5e0!3m2!1ses-419!2sar!4v1704373241067!5m2!1ses-419!2sar",
-      "mainImage": "1704452832788_products.jpg",
-      "images": [],
-      "category": "barato"
    }
 ]
