@@ -3,7 +3,7 @@
       "id": "6c2714cb-a55b-4228-adcc-fe8063f34608",
       "name": "Admin",
       "surname": "Kitchening",
-      "email": "admin@gmail.com",
+      "email": "adminJSON@gmail.com",
       "password": "$2a$10$ptWyEh10wr9e35sk4FxtzOtopF/setiAsglRRH/8vCUkNLsUY3Md6",
       "role": "admin"
    },

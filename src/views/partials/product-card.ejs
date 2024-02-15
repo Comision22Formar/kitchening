@@ -1,9 +1,9 @@
 <article class="home__main__products__product" >
     <div class="home__main__products__product__photo-container">
-        <img class="home__main__products__product__photo-container--photo" src="images/<%= mainImage || 'default.png' %>"
+        <img class="home__main__products__product__photo-container--photo" src="images/<%= image || 'default.png' %>"
             alt="pdto 01">
-        <img class="home__main__products__product__photo-container--special" src="images/<%= category === "barato" ? 'img-descuento.png' : category === "romantico" ? 'img-gratis.png' : 'img-nuevo.png' %>"
-            alt="plato nuevo">
+        <img class="home__main__products__product__photo-container--special" src="images/<%= category.name.toLowerCase() === "barato" ? 'img-descuento.png' : category.name.toLowerCase() === "romántico" ? 'img-gratis.png' : 'img-nuevo.png' %>"
+            alt="restó">
         <a class="home__main__products__product__photo-container--zoom" href="#">Ampliar foto</a>
     </div>
     <h3><%= name %></h3>

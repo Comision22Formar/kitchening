@@ -1,21 +1,32 @@
 const { leerJSON } = require("../data")
 
+const db = require('../database/models')
+
 module.exports = {
     index : (req,res) => {
-        const products = leerJSON('products');
-        return res.render('index', {
-            products
+        db.Restaurant.findAll({
+            include : ['category']
         })
+            .then(products => {
+                //return res.send(products)
+                return res.render('index', {
+                    products
+                })
+            })
+            .catch(error => console.log(error))
     },
     cart : (req,res) => {
         return res.render('carrito')
     },
     admin : (req,res) => {
-        const products = leerJSON('products');
-
-        return res.render('dashboard', {
-            products
-        })
+        db.Restaurant.findAll()
+            .then(products => {
+                //return res.send(products)
+                return res.render('dashboard', {
+                    products
+                })
+            })
+            .catch(error => console.log(error))
     },
     searchAdmin : (req,res) => {
 

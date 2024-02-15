@@ -13,7 +13,7 @@
             <li class="animate__animated animate__fadeInDown"><a href="#">nosotros</a></li>
             <li class="animate__animated animate__fadeInDown"><a href="#">contacto</a></li>
             <% if (locals.userLogin) { %>
-                <% if (userLogin.role === "admin") { %>
+                <% if (userLogin.role === 1) { %>
                     <li class="animate__animated animate__fadeInDown"><a href="/admin">dashboard</a></li>
                 <% }else{ %>
                     <li class="animate__animated animate__fadeInDown"><a href="/usuarios/reservas">reservas</a></li>

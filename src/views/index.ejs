@@ -20,7 +20,7 @@
 		
 			<% products.forEach(product => { %>
 				<%- include('./partials/product-card',{
-					...product
+					...product.dataValues
 				}) %>
 			<% }) %>
 		

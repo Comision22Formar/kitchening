@@ -11,6 +11,7 @@ const restuarntsDB = restarantsJSON.map((resto, index) => {
     email : "resto@gmail.com",
     image : resto.mainImage,
     categoryId: resto.category == "barato" ? 1 : resto.category == "romantico" ? 2 : 3,
+    addressId : index + 1,
     createdAt: new Date(),
     updatedAt: new Date(),
 
