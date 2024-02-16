@@ -26,6 +26,9 @@ router
       {
         name: "images",
       },
+      {
+        name: "menu_file",
+      },
     ]),
     productAddValidator,
     create
@@ -37,6 +40,9 @@ router
     },
     {
       name: "images",
+    },
+    {
+      name: "menu_file",
     },
   ]),productEditValidator, update)
   .delete("/eliminar/:id", remove);

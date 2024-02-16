@@ -3,11 +3,11 @@ const {check,body} = require('express-validator');
 module.exports = [
     check('name')
         .notEmpty().withMessage('El nombre es obligatorio'),
-    check('address')
+    check('street')
         .notEmpty().withMessage('La dirección es requerida'),
     check('url_map')
         .isURL().withMessage('Debe ser un URL válida'),
-    check('category')
+    check('categoryId')
         .notEmpty().withMessage('La categoría es requerida'),
     body('mainImage')
         .custom((value, {req}) => {
