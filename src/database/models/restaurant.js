@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'images',
         foreignKey : 'restaurantId'
       })
-      Restaurant.hasOne(models.Address, {
+      Restaurant.belongsTo(models.Address, {
         as : 'address',
         foreignKey : 'addressId'
       })

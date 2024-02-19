@@ -58,7 +58,7 @@ module.exports = (req, res) => {
 
                     if(images){
 
-                        const imagesDB =  images.map(image => {
+                        const imagesDB = images.map(image => {
                             return {
                                 file: image.filename,
                                 restaurantId : resto.id

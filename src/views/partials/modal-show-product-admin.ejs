@@ -1,30 +1,42 @@
 <!-- Modal -->
-<div class="modal fade" id="showProductModal<%= id %>" tabindex="-1" aria-labelledby="showProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="showProductModalLabel"><%= name %></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-12 col-lg-4 mb-3">
-                    <img src="/images/<%= mainImage || 'default.png' %>" class="img-fluid" alt="">
-                </div>
-                <div class="col-12 col-lg-8">
-                    <ul class="list-group">
-                        <li class="list-group-item">Dirección: <b><%= address %></b></li>
-                        <li class="list-group-item">Teléfono:<b><%= phone %></b></li>
-                        <li class="list-group-item">Categoría: <b><%= category %></b></li>
-                        <li class="list-group-item">Descripcion: <i><%= description %></i></li>
-                      </ul>
+<div class="modal fade" id="showProductModal<%= id %>" tabindex="-1" aria-labelledby="showProductModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="showProductModalLabel">
+          <%= name %>
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 col-lg-4 mb-3">
+            <img src="/images/<%= image || 'default.png' %>" class="img-fluid" alt="">
+          </div>
+          <div class="col-12 col-lg-8">
+            <ul class="list-group">
+              <li class="list-group-item">Dirección: <b>
+                  <%= address.street %>
+                    <%= address.city %>,
+                      <%= address.province %>
+                </b></li>
+              <li class="list-group-item">Teléfono:<b>
+                  <%= phone %>
+                </b></li>
+              <li class="list-group-item">Categoría: <b>
+                  <%= category.name %>
+                </b></li>
+              <li class="list-group-item">Descripcion: <i>
+                  <%= description %>
+                </i></li>
+            </ul>
 
-                    
-                </div>
-            </div>
-          
+
+          </div>
         </div>
+
       </div>
     </div>
   </div>
-  
+</div>

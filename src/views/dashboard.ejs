@@ -39,7 +39,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <% products.forEach(({id,name,address,category, mainImage,description,
+                                            <% products.forEach(({id,name,address,category, image,description,
                                                 phone},index)=>
                                                 { %>
                                                 <tr>
@@ -50,10 +50,16 @@
                                                         <%= name %>
                                                     </td>
                                                     <td>
-                                                        <%= address %>
+                                                        <% if (address.street) { %>
+                                                            <%= address.street %>
+                                                            <%= address.city %>, 
+                                                            <%= address.province %>
+                                                        <% } %>   
+                                                        </p>
+                                                       
                                                     </td>
                                                     <td>
-                                                        <%= category %>
+                                                        <%= category.name %>
                                                     </td>
                                                     <td>
                                                         <div class="d-flex gap-2">
@@ -71,7 +77,7 @@
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </button>
                                                             <%- include('./partials/modal-show-product-admin',{ id,
-                                                                name, address, category, mainImage, description, phone
+                                                                name, address, category, image, description, phone
                                                                 }) %>
                                                             <%- include('./partials/modal-warning-delete-product-admin',{ id, name
                                                                 }) %>

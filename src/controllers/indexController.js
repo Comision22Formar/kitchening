@@ -19,7 +19,9 @@ module.exports = {
         return res.render('carrito')
     },
     admin : (req,res) => {
-        db.Restaurant.findAll()
+        db.Restaurant.findAll({
+            include : ['address','category']
+        })
             .then(products => {
                 //return res.send(products)
                 return res.render('dashboard', {
