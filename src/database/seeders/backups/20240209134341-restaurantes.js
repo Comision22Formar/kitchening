@@ -1,5 +1,5 @@
 "use strict";
-const restarantsJSON = require('../../data/products.json')
+const restarantsJSON = require('../../../data/products.json')
 
 const restuarntsDB = restarantsJSON.map((resto, index) => {
   return {
