@@ -22,10 +22,13 @@
 
 .home__main__products__product__photo-container {
   position: relative;
+  height: 60%;
 }
 
 .home__main__products__product__photo-container--photo {
   width: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 
 .home__main__products__product__photo-container--special {

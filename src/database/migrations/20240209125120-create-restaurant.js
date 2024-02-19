@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       url_map: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       phone: {
         type: Sequelize.STRING,

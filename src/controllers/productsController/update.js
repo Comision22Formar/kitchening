@@ -1,69 +1,143 @@
 const { validationResult } = require("express-validator");
-const { leerJSON, escribirJSON } = require("../../data");
-const { existsSync, unlinkSync } = require('fs');
-const categories = require('../../data/categories.json');
+const { existsSync, unlinkSync } = require("fs");
+const categories = require("../../data/categories.json");
+const db = require("../../database/models");
 
+module.exports = (req, res) => {
+  const image = req.files.mainImage;
+  const images = req.files.images;
+  const menu_file = req.files.menu_file;
 
-module.exports = (req,res) => {
+  const {
+    name,
+    street,
+    city,
+    province,
+    url_map,
+    description,
+    categoryId,
+    coverPrice,
+    phone,
+    email,
+    menu_url,
+    capacity,
+  } = req.body;
 
-    const {name, address,url_map, description, category} = req.body;
+  const { id } = req.params;
 
-    const {id} = req.params;
+  const errors = validationResult(req);
 
-    const mainImage = req.files.mainImage;
-    const images = req.files.images;
+  //return res.send(errors)
 
-    const products = leerJSON('products');
-
-    const errors = validationResult(req);
-
-    if(errors.isEmpty()){
-
-    const produtsUpdated = products.map(product => {
-        if(product.id == id){
-            
-            (mainImage && existsSync('public/images/' + product.mainImage)) && unlinkSync('public/images/' + product.mainImage)
-            
-            if(images){
-                product.images.forEach(image => {
-                    existsSync('public/images/' + image) && unlinkSync('public/images/' + image)
-                });
-            } 
-
-            product.name = name.trim();
-            product.description = description.trim();
-            product.address = address.trim();
-            product.url_map = url_map.trim();
-            product.mainImage = mainImage ? mainImage[0].filename : product.mainImage;
-            product.images = images ? images.map(image => image.filename) : product.images;
-            product.category = category;
-
+  if (errors.isEmpty()) {
+    db.Restaurant.findByPk(id,{
+        include : ['images']
+    }).then((resto) => {
+      db.Address.update(
+        {
+          street,
+          city,
+          province,
+        },
+        {
+          where: {
+            id: resto.addressId,
+          },
         }
-        return product
-    });
+      ).then(() => {
+        if(image){
+          existsSync("public/images/" + resto.image) &&
+          unlinkSync("public/images/" + resto.image) 
+        }
+        if(menu_file) {
+          existsSync("public/documents/" + resto.menu_file) &&
+          unlinkSync("public/documents/" + resto.menu_file)
+        }
 
+        db.Restaurant.update(
+          {
+            name,
+            description,
+            url_map,
+            phone,
+            email,
+            menu_url,
+            capacity,
+            coverPrice,
+            categoryId,
+            image: image ? image[0].filename : resto.image,
+            menu_file: menu_file ? menu_file[0].filename : resto.menu_file,
+          },
+          {
+            where: {
+              id,
+            },
+          }
+        ).then(() => {
+            if (images) {
+                resto.images.forEach((image) => {
+                  existsSync("public/images/" + image.file) &&
+                    unlinkSync("public/images/" + image.file);
+                });
 
-
-    escribirJSON(produtsUpdated, 'products')
-
-    return res.redirect('/admin')
-}else{
-    (mainImage && existsSync('public/images/' + mainImage.filename)) && unlinkSync('public/images/' + mainImage.filename)
+                db.Image.destroy({
+                    where : {
+                        restaurantId : id
+                    }
+                  }).then(() => {
+                    const imagesDB = images.map(image => {
+                        return {
+                            file: image.filename,
+                            restaurantId : resto.id
+                        }
+                    }) 
     
-    if(images){
-        images.images.forEach(image => {
-            existsSync('public/images/' + image) && unlinkSync('public/images/' + image)
+                    db.Image.bulkCreate(imagesDB, {
+                        validate : true
+                    }).then(result => {
+                        console.log(result);
+                        return res.redirect("/admin");
+                    })
+                  })
+                }else {
+                  return res.redirect("/admin");
+
+                }       
         });
-    } 
+      });
+    }).catch(error => console.log(error));
 
-    const product = products.find(product => product.id == id);
+  } else {
+    image &&
+      existsSync("public/images/" + image.filename) &&
+      unlinkSync("public/images/" + image.filename);
 
-    return res.render('products/product-edit',{
-        errors : errors.mapped(),
-        ...product,
-        categories
+    if (images) {
+      images.forEach((image) => {
+        existsSync("public/images/" + image) &&
+          unlinkSync("public/images/" + image);
+      });
+    }
+    if (menu_file) {
+      fs.existsSync(`public/documents/${menu_file[0].filename}`) &&
+        fs.unlinkSync(`public/documents/${menu_file[0].filename}`);
+    }
+
+    const resto = db.Restaurant.findByPk(id, {
+        include : ['category','address']
     })
-}
+    const categories = db.Category.findAll({
+        order: [['name']]
+    })
+        Promise.all([resto, categories])
+        .then(([resto, categories]) => {
+            return res.render('products/product-edit',{
+                ...resto.dataValues,
+                categories,
+                errors : errors.mapped()
+            })
+        })
+        .catch(error => console.log(error))
 
-
-}
+  }
+};

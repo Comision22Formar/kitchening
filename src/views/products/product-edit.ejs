@@ -33,29 +33,103 @@
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                               <div class="form-floating">
-                                <input name="address" type="text" class="form-control" id="address" value="<%= address %>">
-                                <label for="address">Dirección</label>
+                                <input name="street" type="text" class="form-control" id="street" value="<%= address.street %>">
+                                <label for="street">Dirección</label>
                               </div>
-                              <small class="text-danger ms-2"><%= (locals.errors && errors.address) && errors.address.msg %></small>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.street) && errors.street.msg %></small>
 
                             </div>
-                            <div class="col-12 mb-3 d-flex justify-content-between align-items-center gap-3">
+                            <div class="col-12 col-md-6 mb-3">
+                              <div class="form-floating">
+                                <input name="city" type="text" class="form-control <%= (locals.errors && errors.city)  && 'is-invalid'%>" id="city" value="<%=address.city %>">
+                                <label for="city">Ciudad</label>
+                              </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.city) && errors.city.msg %></small>
+
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                              <div class="form-floating">
+                                <input name="province" type="text" class="form-control <%= (locals.errors && errors.province)  && 'is-invalid'%>" id="province" value="<%= address.province %>">
+                                <label for="province">Provincia</label>
+                              </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.province) && errors.province.msg %></small>
+
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                              <div class="form-floating">
+                                <input name="email" type="email" class="form-control <%= (locals.errors && errors.email)  && 'is-invalid'%>" id="email" value="<%= email %>">
+                                <label for="email">Email</label>
+                              </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.email) && errors.email.msg %></small>
+
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                              <div class="form-floating">
+                                <input name="phone" type="text" class="form-control <%= (locals.errors && errors.phone)  && 'is-invalid'%>" id="phone" value="<%= phone %>">
+                                <label for="phone">Telefono</label>
+                              </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.email) && errors.email.msg %></small>
+
+                            </div>
+                            <div class="col-12 mb-3 ">
+                              <div class="d-flex justify-content-between align-items-center gap-3">
                                 <div class="form-floating w-100">
                                   <input name="url_map" type="text" class="form-control" id="url_map" value="<%= url_map %>">
                                   <label for="url_map">URL Google Maps</label>
                                 </div>
                                 <a href="https://www.google.com/maps" target="_blank" class="btn btn-lg btn-outline-dark"><i class="fa-solid fa-map-location-dot"></i></a>
                               </div>
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="form-floating">
-                                    <select name="category" class="form-select" id="category" aria-label="Floating label select example">
-                                      <% categories.forEach(cat => { %>
-                                        <option value="<%= cat %>" <%= category == cat ? 'selected' : null %>><%= cat %></option>
-                                      <% }) %>
-                                    </select>
-                                    <label for="category">Categoría</label>
-                                  </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.url_map) && errors.url_map.msg %></small>
+
                               </div>
+                              <div class="col-12 mb-3">
+                                <div class="form-floating">
+                                    <textarea name="description" class="form-control <%= (locals.errors && errors.description) && 'is-invalid' %>" id="description" style="height: 150px;"><%= description %></textarea>
+                                    <label for="description">Descripción</label>
+                                  </div>
+                                  <small class="text-danger ms-2"><%= (locals.errors && errors.description) && errors.description.msg %></small>
+
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                              <div class="form-floating">
+                                  <select name="categoryId" class="form-select <%= (locals.errors && errors.categoryId)  && 'is-invalid'%>" id="categoryId" aria-label="Floating label select example">
+                                    <option value="" selected hidden></option>
+                                    <% categories.forEach(category => { %>
+                                      <option value="<%= category.id %>" <%= categoryId == category.id && 'selected'  %>><%= category.name %></option>
+                                    <% }) %>
+                                  </select>
+                                  <label for="category">Categoría</label>
+                                </div>
+                                <small class="text-danger ms-2"><%= (locals.errors && errors.category) && errors.category.msg %></small>
+
+                            </div>
+                            <div class="col-12 col-md-3 mb-3">
+                              <div class="form-floating">
+                                <input name="coverPrice" type="number" class="form-control <%= (locals.errors && errors.coverPrice)  && 'is-invalid'%>" id="coverPrice" value="<%= coverPrice %>">
+                                <label for="coverPrice">Precio</label>
+                              </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.coverPrice) && errors.coverPrice.msg %></small>
+
+                            </div>
+                            <div class="col-12 col-md-3 mb-3">
+                              <div class="form-floating">
+                                <input name="capacity" type="number" class="form-control <%= (locals.errors && errors.capacity)  && 'is-invalid'%>" id="capacity" value="<%= capacity %>">
+                                <label for="capacity">Capacidad</label>
+                              </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.capacity) && errors.capacity.msg %></small>
+
+                            </div>
+                            <div class="col-12 mb-3 d-flex justify-content-between">
+                              <div class="w-100">
+                              <div class="form-floating">
+                                <input name="menu_url" type="text" class="form-control <%= (locals.errors && errors.menu_url)  && 'is-invalid'%>" id="menu_url" value="<%= menu_url %>">
+                                <label for="menu_url">URL Menú</label>
+                              </div>
+                            </div>
+                              <small class="text-danger ms-2"><%= (locals.errors && errors.menu_url) && errors.menu_url.msg %></small>
+                              <input  name="menu_file" type="file" class="form-control" accept="application/pdf" id="menu_file" hidden >
+                              <label class="btn btn-lg btn-outline-dark" for="menu_file"><i class="fa-solid fa-file-pdf"></i></label>
+                            </div>
                               <div class="col-12 col-md-3 mb-3">
                                   <input name="mainImage" type="file" class="form-control" id="mainImage" hidden>
                                   <label class="btn btn-lg btn-outline-dark w-100" for="mainImage">Imagen principal</label>
@@ -64,13 +138,7 @@
                                 <input  name="images" type="file" class="form-control" id="images" hidden multiple>
                                 <label class="btn btn-lg btn-outline-dark w-100" for="images">Imágenes</label>
                             </div>
-                            <div class="col-12 mb-3">
-                                <div class="form-floating">
-                                    <textarea name="description" class="form-control" id="description" style="height: 150px;"><%= description %></textarea>
-                                    <label for="description">Descripción</label>
-                                  </div>
-                                  <small class="text-danger ms-2"><%= (locals.errors && errors.description) && errors.description.msg %></small>
-                            </div>
+                          
                            
                             <div class="col-12 d-flex justify-content-end">
                                 <button class="btn btn-lg btn-dark">Guardar cambios</button>

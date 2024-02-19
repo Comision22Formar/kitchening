@@ -84,6 +84,11 @@ module.exports = (req, res) => {
       fs.existsSync(`public/images/${image[0].filename}`) &&
         fs.unlinkSync(`public/images/${image[0].filename}`);
     }
+    if(images){
+      images.forEach(image => {
+          existsSync('public/images/' + image) && unlinkSync('public/images/' + image)
+      });
+  } 
     if ( menu_file) {
         fs.existsSync(`public/documents/${menu_file[0].filename}`) &&
           fs.unlinkSync(`public/documents/${menu_file[0].filename}`);
