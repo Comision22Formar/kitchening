@@ -1,5 +1,4 @@
-const { leerJSON } = require("../data")
-
+const { Op } = require("sequelize")
 const db = require('../database/models')
 
 module.exports = {
@@ -34,15 +33,24 @@ module.exports = {
 
         const {keyword} = req.query
 
-        const products = leerJSON('products');
-
-        const result = products.filter((product) => {
-            return product.name.toLowerCase().includes(keyword.toLowerCase()) || product.address.toLowerCase().includes(keyword.toLowerCase())
-        });
-
-        return res.render('dashboard', {
-            products : result,
-            keyword
+        db.Restaurant.findAll({
+            where : {
+                name : {
+                    [Op.substring] : keyword
+                }
+            },
+            include : ['address','category']
         })
+            .then(result => {
+                return res.render('dashboard', {
+                    products : result,
+                    keyword
+                })
+            })
+            .catch(error => console.log(error))
+
+     
+
+      
     }
 }

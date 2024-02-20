@@ -1,15 +1,35 @@
-const { leerJSON } = require("../../data");
-
+const db = require('../../database/models')
 
 module.exports = (req,res) => {
 
     const {id} = req.params;
 
-    const products = leerJSON('products');
-
-    const product = products.find(product => product.id == id);
-
-    return res.render('products/product-detail',{
-        ...product,
+    const resto = db.Restaurant.findByPk(id,{
+        include : ['images','category','address']
     })
+
+    const bookings = db.Booking.findAll({
+        where : {
+            restaurantId : id
+        },
+        attributes : ['quantity']
+    })
+
+    Promise.all([resto, bookings])
+
+
+        .then(([resto, bookings]) => {
+
+            const total = bookings.map(booking => booking.quantity).reduce((acum, sum) => acum + sum, 0)
+
+            const availability = resto.capacity - total
+            
+            return res.render('products/product-detail',{
+                ...resto.dataValues,
+                availability
+            })
+        })
+        .catch(error => console.log(error))
+
+  
 }

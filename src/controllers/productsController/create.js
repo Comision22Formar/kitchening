@@ -1,7 +1,5 @@
-const { leerJSON, escribirJSON } = require("../../data");
-const Product = require("../../data/Product");
+
 const { validationResult } = require("express-validator");
-const categories = require("../../data/categories.json");
 
 const fs = require("fs");
 const db = require("../../database/models");

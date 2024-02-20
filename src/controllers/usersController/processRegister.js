@@ -1,3 +1,7 @@
+const { validationResult } = require("express-validator");
+const db = require('../../database/models');
+const {hashSync} = require('bcryptjs')
+
 module.exports = processRegister = (req,res) => {
     const errors = validationResult(req);
     const {name, surname : lastname, email, password} = req.body;
@@ -10,7 +14,7 @@ module.exports = processRegister = (req,res) => {
                     name,
                     lastname,
                     email,
-                    password : bcryptjs.hashSync(password.trim(),10),
+                    password : hashSync(password.trim(),10),
                     roleId : 2,
                     addressId : address.id
                 })

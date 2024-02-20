@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
       Restaurant.hasMany(models.Image, {
         as: 'images',
         foreignKey : 'restaurantId'
-      })
+      });
       Restaurant.belongsTo(models.Address, {
         as : 'address',
         foreignKey : 'addressId'
-      })
+      });
     }
   }
   Restaurant.init(
