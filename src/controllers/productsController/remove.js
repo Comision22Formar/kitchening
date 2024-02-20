@@ -1,20 +1,48 @@
-const {existsSync, unlinkSync} = require('fs')
-const { leerJSON, escribirJSON } = require("../../data");
+const { existsSync, unlinkSync } = require("fs");
 
-module.exports = (req,res) => {
+const db = require("../../database/models");
 
-    const {id} = req.params;
-    const products = leerJSON('products');
+module.exports = (req, res) => {
+  const { id } = req.params;
 
-    const {mainImage} = products.find(product => product.id == id);
+  db.Restaurant.findByPk(id, {
+    include: ["images", "address"],
+  }).then(({ image, images, menu_file, addressId }) => {
 
-    existsSync('public/images/' + mainImage) && unlinkSync('public/images/' + mainImage)
+    existsSync(`public/documents/${menu_file}`) &&
+    unlinkSync(`public/documents/${menu_file}`);
 
-    const productsFiltered = products.filter(product => product.id != id);
+    existsSync("public/images/" + image) &&
+      unlinkSync("public/images/" + image);
 
-    escribirJSON(productsFiltered, 'products');
+    images.forEach((image) => {
+      existsSync("public/images/" + image.file) &&
+        unlinkSync("public/images/" + image.file);
+    });
 
-    return res.redirect('/admin')
+    db.Image.destroy({
+        where : {
+            restaurantId : id
+        }
+    }).then(() => {
+
+        db.Restaurant.destroy({
+            where : {
+                id
+            }
+        }).then(() => {
+            db.Address.destroy({
+                where : {
+                    id : addressId
+                }
+            }) .then(() => {
+                return res.redirect('/admin')
+            })
+        }) 
+    })
+
+  })
+    .catch(error => console.log(error))
 
 
-}
+};

@@ -23,7 +23,7 @@ module.exports = processLogin = (req,res) => {
                     maxAge : 1000 * 60 * 2
                 })
         
-                return res.redirect('/')
+                return roleId == 1 ? res.redirect('/admin') : res.redirect('/')
 
             })
             .catch(error => console.log(error))

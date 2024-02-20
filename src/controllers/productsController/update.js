@@ -131,6 +131,7 @@ module.exports = (req, res) => {
     })
         Promise.all([resto, categories])
         .then(([resto, categories]) => {
+
             return res.render('products/product-edit',{
                 ...resto.dataValues,
                 categories,

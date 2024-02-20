@@ -93,10 +93,18 @@ module.exports = (req, res) => {
         fs.existsSync(`public/documents/${menu_file[0].filename}`) &&
           fs.unlinkSync(`public/documents/${menu_file[0].filename}`);
       }
-    return res.render("products/product-add", {
-      errors: errors.mapped(),
-      old: req.body,
-      categories,
-    });
+
+      db.Category.findAll({
+        order: [['name']]
+      })
+        .then(categories => {
+          return res.render("products/product-add", {
+            errors: errors.mapped(),
+            old: req.body,
+            categories,
+          });
+        })
+        .catch(error => console.log(error))
+   
   }
 };
