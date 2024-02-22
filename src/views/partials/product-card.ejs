@@ -1,11 +1,20 @@
-<article class="home__main__products__product" >
-    <div class="home__main__products__product__photo-container">
-        <img class="home__main__products__product__photo-container--photo" src="images/<%= image || 'default.png' %>"
-            alt="pdto 01">
-        <img class="home__main__products__product__photo-container--special" src="images/<%= category.name.toLowerCase() === "barato" ? 'img-descuento.png' : category.name.toLowerCase() === "romántico" ? 'img-gratis.png' : 'img-nuevo.png' %>"
-            alt="restó">
-    </div>
-    <h3><%= name %></h3>
-    <p><%= description %></p>
-    <a class="home__main__products__product__photo-container--more" href="/productos/detalle/<%= id %>">ver más</a>
-</article>
+<a class="home__main__products__product" href="/productos/detalle/<%= id %>">
+        <div class="home__main__products__product__photo-container">
+            <img class="home__main__products__product__photo-container--photo" src="images/<%= image || 'default.png' %>"
+                alt="pdto 01">
+            <img class="home__main__products__product__photo-container--special" src="images/<%= category.name.toLowerCase() === "barato" ? 'img-descuento.png' : category.name.toLowerCase() === "romántico" ? 'img-gratis.png' : 'img-nuevo.png' %>"
+                alt="restó">
+        </div>
+        <div class="p-2">
+
+        <h3 class="text-dark"><%= name %></h3>
+        <p><%= description %></p>
+        <div class="text-dark text-end">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+</a>
