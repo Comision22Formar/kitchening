@@ -10,22 +10,17 @@
 			<%- include('../partials/header') %>
 
 				<section class="row">
-					<div class="col-12 col-md-10 mx-auto">
+					<div class="col-12 col-lg-10 mx-auto">
+						
 						<div class="card" style="background-color: rgba(255, 255, 255, 0.5);">
-							
-							<%- include('../partials/slider-detail', {
-								image,
-								images
-							}) %>
-							
-
-							<div class="card-body d-flex flex-column flex-md-row gap-4 flex-wrap">
-									
-											
-										
-								
-								<div class="w-100">
-									<div class="d-flex justify-content-between align-items-center">
+							<div class="row">
+								<%- include('../partials/slider-detail', {
+									image,
+									images
+								}) %>
+							<div class="col-12 col-md-6 col-lg-5">
+							<div class="card-body  d-flex flex-column flex-md-row gap-4 flex-wrap">
+									<div class="d-flex justify-content-between align-items-start w-100">
 										<div>
 											<h3>
 												<%= name %>
@@ -56,19 +51,19 @@
 									</p>
 									<ul class="list-group list-group-flush ">
 										<li class="list-group-item bg-transparent"><i class="fa-solid fa-utensils"></i>
-											Precio del cubierto: <b> $<%= coverPrice %></b></li>
+											El cubierto, <b> $<%= coverPrice %></b> por persona</li>
 										<li class="list-group-item bg-transparent"><i
-												class="fa-solid fa-people-group"></i> Capacidad <b>
-												<%= capacity %>
-											</b></li>
+												class="fa-solid fa-people-group"></i> Hasta <b>
+												<%= capacity %> 
+											</b> personas</li>
 
 										<% if (locals.userLogin) { %>
 											<li class="list-group-item bg-transparent"><i class="fa-solid fa-phone"></i>
-												Teléfono: <b>
+												<b>
 													<%= phone %>
 												</b></li>
 											<li class="list-group-item bg-transparent"><i
-													class="fa-solid fa-envelope"></i> Email <b>
+													class="fa-solid fa-envelope"></i> <b>
 													<%= email %>
 												</b></li>
 											<% } %>
@@ -77,6 +72,10 @@
 										<button class="btn btn-dark">Reservar</button>
 									</div>
 
+								</div>
+							</div>
+								<div class="col-12">
+									<div class="card-body">
 									<h4>Reseñas</h4>
 									<hr>
 									<div class="row g-3">
@@ -85,48 +84,54 @@
 									</div>
 									<%- include('../partials/reviewer-form') %>
 								</div>
+								</div>
+								<div class="col-12">
+									<div class="card-body">
+<!-- Swiper -->
+<div class="swiper mySwiper">
+	<div class="swiper-wrapper">
 
 
-								<!-- Swiper -->
-								<div class="swiper mySwiper">
-									<div class="swiper-wrapper">
+		<% relateds.forEach(resto=> { %>
+			<div class="swiper-slide">
+				<a href="/productos/detalle/<%= resto.id %>">
+					<div class="card">
+						<img class="card-img-top" src="/images/<%= resto.image %>" %>"
+						alt="restó">
+						<div class="card-body">
+							<h4 class="card-title">
+								<%= resto.name %>
+							</h4>
+							<div class="text-dark text-end">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="far fa-star"></i>
+							</div>
+						</div>
+					
+					</div>
+				</a>
+				
+			</div>
 
 
-										<% relateds.forEach(resto=> { %>
-											<div class="swiper-slide">
-												<a href="/productos/detalle/<%= resto.id %>">
-													<div class="card">
-														<img class="card-img-top" src="/images/<%= resto.image %>" %>"
-														alt="restó">
-														<div class="card-body">
-															<h4 class="card-title">
-																<%= resto.name %>
-															</h4>
-															<div class="text-dark text-end">
-																<i class="fas fa-star"></i>
-																<i class="fas fa-star"></i>
-																<i class="fas fa-star"></i>
-																<i class="fas fa-star"></i>
-																<i class="far fa-star"></i>
-															</div>
-														</div>
-													
-													</div>
-												</a>
-												
-											</div>
+			<% }) %>
 
-
-											<% }) %>
-
+	</div>
+	<div class="swiper-pagination"></div>
+</div>
 									</div>
-									<div class="swiper-pagination"></div>
 								</div>
 
-								<%- include('../partials/modal-show-map-detail',{ url_map, }) %>
-							</div>
+								
 
+								<%- include('../partials/modal-show-map-detail',{ url_map, }) %>
+							
 						</div>
+						</div>
+					
 					</div>
 				</section>
 				<%- include('../partials/footer') %>

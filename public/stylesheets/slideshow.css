@@ -1,12 +1,7 @@
-.mySlides {display: none;}
-.mySlides img {width: 100%;}
+.mySlides {display: none; width: 100%;}
+.mySlides img {height: 600px; object-fit: cover; border-radius: 5px 5px 0 0;}
 
 /* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
 
 .active {
   background-color: #717171;
@@ -15,7 +10,12 @@
 /* Fading animation */
 .fade {
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 3s;
+}
+
+@media (min-width: 768px) {
+  .mySlides img {height: 600px; border-radius: 5px 0 0 0;}
+
 }
 
 @keyframes fade {

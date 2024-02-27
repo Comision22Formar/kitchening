@@ -1,34 +1,41 @@
-<div class="slideshow-container">
+<div class="slideshow-container col-12 col-md-6 col-lg-7">
 
-    <div class="mySlides fade" style="width: 100%;">
-        <img src="/images/<%= image %>" alt="roto" class="img-fluid">
-    </div>
-    <% images.forEach(image => { %>
-        <div class="mySlides fade" style="width: 100%;">
-
-        <img src="/images/<%= image.file %>" alt="roto"  class="img-fluid">
+  <div class="mySlides">
+    <img src="/images/<%= image %>" alt="roto" class="img-fluid">
+  </div>
+  <% images.length && images.forEach(image=> { %>
+    <div class="mySlides fade">
+      <img src="/images/<%= image.file %>" alt="roto" class="img-fluid">
     </div>
 
     <% }) %>
 
-  
-
 </div>
 
 <script>
-    let slideIndex = 0;
-    showSlides();
-    
+  let slideIndex = 0;
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  if (slides.length > 1) {
+    slides[0].classList.add('fade')
+    showSlides()
     function showSlides() {
-      let i;
-      let slides = document.getElementsByClassName("mySlides");
+
+
       for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
+        slides[i].style.display = "none";
       }
       slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}    
-    
-      slides[slideIndex-1].style.display = "block";  
-      setTimeout(showSlides, 2000); // Change image every 2 seconds
+      if (slideIndex > slides.length) { slideIndex = 1 }
+
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000);
+
     }
-    </script>
+  } else {
+    slides[0].style.display = "block";
+
+  }
+
+
+</script>

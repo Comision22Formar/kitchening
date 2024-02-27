@@ -52,7 +52,7 @@ module.exports = (req, res) => {
                 .then(resto => {
                     console.log(resto);
 
-                    this.images = images ? images.map(image => image.filename) : [];
+                    const images = images ? images.map(image => image.filename) : [];
 
                     if(images){
 
