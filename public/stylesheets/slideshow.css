@@ -3,7 +3,7 @@
 
 /* Slideshow container */
 
-.active {
+.mySlides .active {
   background-color: #717171;
 }
 

@@ -10,6 +10,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-image: url('/images/bg-body.png');

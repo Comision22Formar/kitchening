@@ -4,7 +4,7 @@ const db = require('../database/models')
 module.exports = {
     index : (req,res) => {
         db.Restaurant.findAll({
-            include : ['category']
+            include : ['category','address']
         })
             .then(products => {
                 //return res.send(products)
@@ -19,7 +19,7 @@ module.exports = {
     },
     admin : (req,res) => {
         db.Restaurant.findAll({
-            include : ['address','category']
+            include : ['address','category','images']
         })
             .then(products => {
                 //return res.send(products)

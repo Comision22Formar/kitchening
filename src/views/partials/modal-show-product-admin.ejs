@@ -13,6 +13,11 @@
         <div class="row">
           <div class="col-12 col-lg-4 mb-3">
             <img src="/images/<%= image || 'default.png' %>" class="img-fluid" alt="">
+            <div class="d-flex justify-content-between flex-wrap mt-1">
+              <% images.forEach(image => { %>
+                <img src="/images/<%= image.file || 'default.png' %>"  alt="" width="32%">
+              <% }) %>
+            </div>
           </div>
           <div class="col-12 col-lg-8">
             <ul class="list-group">

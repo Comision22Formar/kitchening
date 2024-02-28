@@ -40,7 +40,7 @@
                                         </thead>
                                         <tbody>
                                             <% products.forEach(({id,name,address,category, image,description,
-                                                phone},index)=>
+                                                phone, images},index)=>
                                                 { %>
                                                 <tr>
                                                     <th scope="row">
@@ -77,7 +77,7 @@
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </button>
                                                             <%- include('./partials/modal-show-product-admin',{ id,
-                                                                name, address, category, image, description, phone
+                                                                name, address, category, image, description, phone, images
                                                                 }) %>
                                                             <%- include('./partials/modal-warning-delete-product-admin',{ id, name
                                                                 }) %>
