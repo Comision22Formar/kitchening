@@ -1,5 +1,6 @@
-<a class="home__main__products__product" href="/productos/detalle/<%= id %>#card-detail" style="background-image: url('images/<%= image %>'); position: relative;">
-        <div class="home__main__products__product__photo-container">
+<a class="home__main__products__product" href="/productos/detalle/<%= id %>#card-detail" style="background-image: url('images/<%= image %>');">
+    <div class="home__main__products__product__container">  
+    <div class="home__main__products__product__photo-container">
             <img class="home__main__products__product__photo-container--photo" src="images/<%= image || 'default.png' %>"
                 alt="pdto 01">
             <img class="home__main__products__product__photo-container--special" src="images/<%= category.name.toLowerCase() === "barato" ? 'img-descuento.png' : category.name.toLowerCase() === "romántico" ? 'img-gratis.png' : 'img-nuevo.png' %>"
@@ -19,4 +20,5 @@
             <i class="far fa-star"></i>
           </span>
         </div>
+    </div> 
 </a>
