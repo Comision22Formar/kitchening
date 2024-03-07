@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const paginate = require('express-paginate');
 
 const indexRouter = require('./routes/index.routes')
 const usersRouter = require('./routes/users.routes');
@@ -47,6 +48,8 @@ app
 
   .use(cookieCheck)
   .use(transferLocals)
+
+  .use(paginate.middleware(10,50))
 
   /* rutas */
   .use('/', indexRouter)

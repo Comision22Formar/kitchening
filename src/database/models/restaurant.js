@@ -25,7 +25,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Restaurant.init(
     {
-      name: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
@@ -33,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       coverPrice: { type: DataTypes.INTEGER, allowNull: false },
       image: { type: DataTypes.STRING, allowNull: true },
       menu_file: { type: DataTypes.STRING, allowNull: true },
-      menu_url: { type: DataTypes.STRING, allowNull: false },
+      menu_url: { type: DataTypes.STRING, allowNull: true },
       url_map: { type: DataTypes.STRING, allowNull: true },
       phone: { type: DataTypes.STRING, allowNull: false },
       capacity: { type: DataTypes.INTEGER, allowNull: false },
