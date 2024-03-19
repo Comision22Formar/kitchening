@@ -1,6 +1,7 @@
 const express = require('express');
 const { getAllResto, getOneResto, createResto } = require('../controllers/apis/restaurantsApiController');
 const upload = require('../middlewares/upload');
+const { checkEmail } = require('../controllers/apis/usersApiController');
 const router = express.Router();
 
 /* /apis */
@@ -21,6 +22,7 @@ router
     },
   ]),
   createResto)
+  .get('/users/check-email',checkEmail)
 
 
 module.exports = router

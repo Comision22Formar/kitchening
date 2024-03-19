@@ -16,7 +16,12 @@
 								<h4 class="card-title">Login de usuario</h4>
 							</div>
 							<div class="card-body">
-								<form action="" class="row" method="POST">
+								<form action="" class="row" method="POST" id="form-login">
+									<div class="col-12">
+										<div class="alert alert-danger" id="msg-error" hidden>
+										  Todos los campos son obligatorios
+										</div>
+									  </div>
 									<div class="col-12 mb-3">
 										<label for="email" class="form-label">Correo electrónico</label>
 										<input type="email" name="email" class="form-control" id="email"
@@ -26,10 +31,16 @@
 									</div>
 									<div class="col-12 mb-3">
 										<label for="password" class="form-label">Contraseña</label>
-										<input type="password" name="password" class="form-control" id="password">
-										<small class="text-danger ms-2"><%= locals.errors && errors.password ? errors.password.msg : null %></small>
-
-									</div>
+										<div class="input-group">
+										<input type="password" name="password"
+										  class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>"
+										  id="password" />
+										  <span class="input-group-text"><i id="button-eye" class="fa fa-eye"></i></span>
+										</div>
+										<small class="text-danger ms-2" id="error-password">
+										  <%= locals.errors && errors.password ? errors.password.msg : null %>
+										</small>
+									  </div>
 									<div class="col-12 col-md-6 mb-3">
 
 										<div class="form-check">
@@ -51,7 +62,7 @@
 				<%- include('../partials/footer') %>
 
 		</main>
-
+		<script src="/javascripts/loginValidator.js"></script>
 	</body>
 
 </html>
