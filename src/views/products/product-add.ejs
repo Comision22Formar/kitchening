@@ -21,7 +21,7 @@
                           </nav>
                     </div>
                     <div class="card-body">
-                        <form action="/productos/crear" method="POST" class="row" enctype="multipart/form-data">
+                        <form action="/productos/crear" method="POST" class="row" enctype="multipart/form-data" id="form-product-add">
                             <h3>Nuevo Restaurante</h3>
                             <hr>
                             <div class="col-12 col-md-6 mb-3">
@@ -41,7 +41,9 @@
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                               <div class="form-floating">
-                                <input name="city" type="text" class="form-control <%= (locals.errors && errors.city)  && 'is-invalid'%>" id="city" value="<%= locals.old && old.city %>">
+                                <select class="form-select <%= (locals.errors && errors.city)  && 'is-invalid'%>" name="city" id="city">
+                                  <option value="" selected hidden>Seleccione primero la provincia</option>
+                                </select>
                                 <label for="city">Ciudad</label>
                               </div>
                               <small class="text-danger ms-2"><%= (locals.errors && errors.city) && errors.city.msg %></small>
@@ -49,7 +51,9 @@
                             </div>
                             <div class="col-12 col-md-6 mb-3">
                               <div class="form-floating">
-                                <input name="province" type="text" class="form-control <%= (locals.errors && errors.province)  && 'is-invalid'%>" id="province" value="<%= locals.old && old.province %>">
+                                <select class="form-select <%= (locals.errors && errors.province)  && 'is-invalid'%>" name="province" id="province">
+                                  <option value="" selected hidden>Seleccione...</option>
+                                </select>
                                 <label for="province">Provincia</label>
                               </div>
                               <small class="text-danger ms-2"><%= (locals.errors && errors.province) && errors.province.msg %></small>
@@ -157,6 +161,6 @@
     </main>
 
     <%- include('../partials/scripts') %>
-
+    <script src="/javascripts/product-add-validator.js"></script>
 </body>
 </html>
