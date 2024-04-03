@@ -68,9 +68,41 @@ const getResto = async (id, req) => {
     }
 }
 
+const getRestoToEdit = async (id, req) => {
+    try {
+        const resto = await db.Restaurant.findByPk(id,{
+            include : [
+                {
+                    association : 'images',
+                    attributes : ['file','id']
+                },
+                {
+                    association : 'address',
+                    attributes : ['street', 'city', 'province']
+
+                }
+            ],
+            attributes :{
+                exclude : ['addressId','createdAt', 'updatedAt']
+            }
+        })
+
+        const restoCustom = {
+            ...resto.dataValues,
+            image : `${req.protocol}://${req.get('host')}/images/${resto.image}`,
+        }
+
+        return restoCustom
+        
+    } catch (error) {
+    
+        return createError(500, error.message)
+    }
+}
 
 
 module.exports = {
     storeResto,
-    getResto
+    getResto,
+    getRestoToEdit
 }

@@ -16,7 +16,11 @@ const apisRouter = require('./routes/apis.routes');
 const transferLocals = require('./middlewares/transferLocals');
 const cookieCheck = require('./middlewares/cookieCheck');
 
+const cors = require('cors');
 
+const corsOptions = {
+  origin: 'http://localhost:5173'
+};
 
 const app = express();
 
@@ -50,6 +54,8 @@ app
   .use(transferLocals)
 
   .use(paginate.middleware(10,50))
+
+  .use(cors(corsOptions))
 
   /* rutas */
   .use('/', indexRouter)

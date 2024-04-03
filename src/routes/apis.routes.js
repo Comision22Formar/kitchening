@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllResto, getOneResto, createResto } = require('../controllers/apis/restaurantsApiController');
+const { getAllResto, getOneResto, createResto, getDataForEditResto } = require('../controllers/apis/restaurantsApiController');
 const upload = require('../middlewares/upload');
 const { checkEmail } = require('../controllers/apis/usersApiController');
 const router = express.Router();
@@ -9,6 +9,7 @@ const router = express.Router();
 router
   .get('/restaurants',getAllResto)
   .get('/restaurants/:id',getOneResto)
+  .get('/restaurants/:id/edit',getDataForEditResto)
   .post('/restaurants',
   upload.fields([
     {

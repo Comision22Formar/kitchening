@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const paginate = require('express-paginate');
 const db = require('../../database/models');
 const { getAllCategories } = require('../../services/category');
-const { storeResto, getResto } = require('../../services/restaurant');
+const { storeResto, getResto, getRestoToEdit } = require('../../services/restaurant');
 const { storeImages } = require('../../services/image');
 const { storeAddress } = require('../../services/address');
 
@@ -65,6 +65,22 @@ const getOneResto = async (req,res) => {
             resto
         })
         
+    } catch (error) {
+        return res.status(error.status || 500).json({
+            ok : false,
+            msg : error.message || 'Upss, hubo un error. Sorry!'
+        })
+    }
+}
+
+const getDataForEditResto = async (req,res) => {
+    try {
+
+        const resto = await getRestoToEdit(req.params.id, req)
+        return res.status(200).json({
+            ok : true,
+            resto
+        })
     } catch (error) {
         return res.status(error.status || 500).json({
             ok : false,
@@ -155,5 +171,6 @@ const createResto = async (req,res) =>{
 module.exports = {
     getAllResto,
     getOneResto,
+    getDataForEditResto,
     createResto
 }
