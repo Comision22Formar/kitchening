@@ -31,6 +31,38 @@ const storeResto = async (data) => {
    
 }
 
+const updateRestoService = async (data) => {
+
+    try {
+
+        const {name, description, coverPrice, menu_url, url_map, phone, capacity, email, categoryId, id} = data
+
+        await db.Restaurant.update(
+            {
+                name,
+                description,
+                coverPrice,
+                menu_url,
+                url_map,
+                phone,
+                capacity,
+                email,
+                categoryId,
+            },
+            {
+                where : {
+                    id
+                }
+
+        })
+
+        
+    } catch (error) {
+        return createError(500, error.message)
+    }
+   
+}
+
 const getResto = async (id, req) => {
     try {
         const resto = await db.Restaurant.findByPk(id,{
@@ -56,8 +88,8 @@ const getResto = async (id, req) => {
         const restoCustom = {
             ...resto.dataValues,
             image : `${req.protocol}://${req.get('host')}/images/${resto.image}`,
-            category : resto.category.name,
-            address : `${resto.address.street} ${resto.address.city}, ${resto.address.province}`
+            categoryName : resto.category.name,
+            addressCompleted : `${resto.address.street} ${resto.address.city}, ${resto.address.province}`
         }
 
         return restoCustom
@@ -79,20 +111,45 @@ const getRestoToEdit = async (id, req) => {
                 {
                     association : 'address',
                     attributes : ['street', 'city', 'province']
-
                 }
             ],
             attributes :{
-                exclude : ['addressId','createdAt', 'updatedAt']
+                exclude : ['createdAt', 'updatedAt']
             }
         })
 
         const restoCustom = {
             ...resto.dataValues,
             image : `${req.protocol}://${req.get('host')}/images/${resto.image}`,
+            street : resto.address.street,
+            city : resto.address.city,
+            province : resto.address.province,
         }
 
         return restoCustom
+        
+    } catch (error) {
+    
+        return createError(500, error.message)
+    }
+}
+
+const deleteRestoService = async (id) => {
+    try {
+
+        const resto = await db.Restaurant.findByPk(id);
+      
+        await db.Address.destroy({
+            where : {
+                id : resto.addressId
+            }
+        })
+
+        await db.Restaurant.destroy({
+            where : {
+                id
+            }
+        })
         
     } catch (error) {
     
@@ -104,5 +161,7 @@ const getRestoToEdit = async (id, req) => {
 module.exports = {
     storeResto,
     getResto,
-    getRestoToEdit
+    getRestoToEdit,
+    updateRestoService,
+    deleteRestoService
 }

@@ -19,6 +19,28 @@ const storeAddress = async (data) => {
     }
 }
 
+const updateAddress = async (data) => {
+
+    const {street, city, province, addressId} = data
+
+    try {
+        await db.Address.update(
+            {
+            street,
+            city,
+            province
+        },{
+            where : {
+                id : addressId
+            }
+        })
+            
+    } catch (error) {
+        return createError(500, error.message)
+    }
+}
+
 module.exports = {
-    storeAddress
+    storeAddress,
+    updateAddress
 }
